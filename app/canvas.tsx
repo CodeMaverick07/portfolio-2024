@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useRef } from "react";
 
 let currentColorId = 1;
@@ -9,7 +8,7 @@ const COLORS = ["#00FFFF", "#4444FF", "#FF00FF", "#FF8800"];
 
 export function Canvas() {
   const blobRef = useRef<HTMLDivElement | null>(null);
-  const h3Ref = useRef<HTMLDivElement | null>(null);
+
   const starbgRef = useRef<HTMLDivElement | null>(null);
   const starcountRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -22,8 +21,6 @@ export function Canvas() {
 
     const blob = document.getElementById("cursorthing") as HTMLDivElement;
     blobRef.current = blob;
-    const h3 = document.getElementById("subtitle") as HTMLDivElement;
-    h3Ref.current = h3;
 
     const canvas = document.getElementById("canvas") as HTMLCanvasElement;
     canvasRef.current = canvas;
@@ -79,11 +76,6 @@ export function Canvas() {
     }
 
     // Update subtitle (if it exists)
-    const h3 = h3Ref.current;
-    if (h3) {
-      h3.style.background = COLORS[currentColorId];
-      h3.style.boxShadow = `0 0 3rem -0.25rem ${COLORS[currentColorId]}`;
-    }
 
     const starbg = starbgRef.current;
     if (starbg) {
@@ -99,16 +91,16 @@ export function Canvas() {
   };
 
   return (
-    <>
+    <div className="h-[400vh] w-screen absolute -z-10">
       <div
         id="cursorthing"
-        className="transform-gpu pointer-events-none w-64 h-64 fixed opacity-50 blur-[10rem] z-10 rounded-full"
+        className="transform-gpu pointer-events-none w-64 h-64 fixed opacity-40 blur-[12rem] rounded-full"
       />
       <canvas
-        className="h-full w-screen"
+        className="h-full w-full"
         id="canvas"
         style={{ background: "#000" }}
       />
-    </>
+    </div>
   );
 }
