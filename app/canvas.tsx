@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 let currentColorId = 1;
 
 // NOTE: these 4 colours match gradients in page.tsx
-const COLORS = ["#00FFFF", "#4444FF", "#FF00FF", "#FF8800"];
+const COLORS = ["#00FFFF", "#4444FF", "#FF00FF"];
 
 export function Canvas() {
   const blobRef = useRef<HTMLDivElement | null>(null);
